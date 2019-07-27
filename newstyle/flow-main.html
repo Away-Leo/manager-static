@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Nixon : Table</title>
+
+    <!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+
+    <!-- Styles -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/bootstrapValidator/bootstrapValidator.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="content-wrap">
+    <div class="main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8 p-0">
+                    <div >
+                        <div class="page-title">
+                            <h1>全局设置</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="row">
+                    <form id="holeDiscount">
+                        <div class="col-lg-6">
+                            <div class="card alert">
+                                <div class="card-body">
+                                    <div class="horizontal-form">
+                                        <div class="form-horizontal" >
+                                            <div  class="form-group">
+                                                <label class="col-sm-2 control-label">扣量比例</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="discountPercent"
+                                                           placeholder="扣量比例（%）">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card alert">
+                                <div class="card-body">
+                                    <div class="horizontal-form">
+                                        <div class="form-horizontal">
+                                            <div  class="form-group">
+                                                <label class="col-sm-2 control-label">起扣数量</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="discountStartNum"
+                                                           placeholder="起扣数量">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row text-center  form-group">
+                    <button type="submit" class="btn btn-primary m-b-10 m-l-5" >提交</button>
+                </div>
+
+            </div><!-- /# main -->
+            <div class="row">
+                <div class="col-lg-8 p-0">
+                    <div >
+                        <div class="page-title">
+                            <h1>渠道来量查看</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card alert">
+                            <div class="card-body">
+                                <table class="table table-responsive table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th>Price</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Kolor Tea Shirt For Man</td>
+                                        <td><span class="badge badge-primary">Sale</span></td>
+                                        <td>January 22</td>
+                                        <td class="color-primary">$21.56</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Kolor Tea Shirt For Women</td>
+                                        <td><span class="badge badge-success">Tax</span></td>
+                                        <td>January 30</td>
+                                        <td class="color-success">$55.32</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Blue Backpack For Baby</td>
+                                        <td><span class="badge badge-danger">Extended</span></td>
+                                        <td>January 25</td>
+                                        <td class="color-danger">$14.85</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div><!-- /# column -->
+                </div><!-- /# container-fluid -->
+            </div><!-- /# main -->
+        </div><!-- /# content wrap -->
+    </div>
+</div>
+
+<script src="assets/bootstrapValidator/bootstrapValidator.js"></script><!-- scripit init-->
+<script src="assets/bootstrapValidator/zh_CN.js"></script><!-- scripit init-->
+
+<script type="text/javascript">
+    $(function () {
+        $('#holeDiscount').bootstrapValidator({
+            // 默认的提示消息
+            message: '输入参数验证失败',
+            // 表单框里右侧的icon
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                discountPercent: {
+                    validators: {
+                        stringLength: {  //长度限制
+                            min: 0,
+                            max: 2,
+                            message: '扣量比例只能低于100'
+                        },
+                        regexp: { //正则表达式
+                            regexp: /^[0-9]+$/,
+                            message: '扣量比例只能是纯数字'
+                        },
+                    }
+                },
+                discountStartNum: {
+                    validators: {
+                        stringLength: {  //长度限制
+                            min: 0,
+                            max: 10,
+                            message: '起始扣量数过大'
+                        },
+                        regexp: { //正则表达式
+                            regexp: /^[0-9]+$/,
+                            message: '起始扣量数只能是纯数字'
+                        },
+                    }
+                }
+            },
+            submitHandler: function (validator, form, submitButton) {
+                alert("submit");
+            }
+        });
+    });
+</script>
+
+</body>
+
+</html>

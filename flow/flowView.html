@@ -4,177 +4,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no"/>
     <title>产品管理</title>
-    <link href="../bootstrap-3.3.5-dist/css/bootstrap.min.css" title="" rel="stylesheet" />
-    <link title="" href="../css/style.css" rel="stylesheet" type="text/css"  />
-    <link title="" href="../css/pagination.css" rel="stylesheet" type="text/css"  />
-    <link title="blue" href="../css/dermadefault.css" rel="stylesheet" type="text/css"/>
-    <link title="green" href="../css/dermagreen.css" rel="stylesheet" type="text/css" disabled="disabled"/>
-    <link title="orange" href="../css/dermaorange.css" rel="stylesheet" type="text/css" disabled="disabled"/>
-    <link href="../css/templatecss.css" rel="stylesheet" title="" type="text/css" />
-    <script src="../script/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="../script/jquery.cookie.js" type="text/javascript"></script>
-    <script src="../script/pingxun.js" type="text/javascript"></script>
-    <script src="../script/jquery.pagination.js" type="text/javascript"></script>
-    <script src="../bootstrap-3.3.5-dist/js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- angular ui-->
-    <link rel="stylesheet" title="" type="text/css" href="../ui-layout-0.0.0/ui-layout.css"/>
-    <script src="../script/angular.min.js"></script>
-    <script src="../ui-layout-0.0.0/ui-layout.js"></script>
-    <link title="blue" href="../script/jquery.mloading.css" rel="stylesheet" type="text/css"/>
-    <script src="../script/jquery.mloading.js" type="text/javascript"></script>
-    <script src="../script/layer.js" type="text/javascript"></script>
-
 </head>
 
 <body>
-<div id="navtop"></div>
-<div class="down-main">
-    <div class="left-main left-full" include="left" id="left"></div>
+
+<div >
+
     <div class="right-product right-full">
+        <div id="flowContent"></div>
     </div>
 </div>
 <script type="text/javascript">
-    function addProduct() {
-        window.location.href="../product/productadd.html";
-    }
-    function initData(pageIndex) {
-        $("#productList").empty();
-        var values = {};
-        var data = $("#searchForm").serializeArray();
-        values["pageNo"]=(pageIndex+1);
-        values["channelNo"]="backend";
-        for (var item in data) {
-            values[data[item].name] = data[item].value;
-        }
-        var result = post(productListUrl,values);
-        if(!result.success){
-            showTipMessage(result.message,true);
-        }else{
-            var resultData = result.data;
-            bindData(resultData);
-        }
-    }
-
-    function bindData(obj) {
-        var resultData = obj.content;
-        var sHtml = "";
-        $.each(resultData, function (j) {
-            var sTrHtml = "";
-            sTrHtml += "<tr>";
-            sTrHtml += "<td>"+resultData[j].id;
-            sTrHtml += "</td>";
-
-            sTrHtml += "<td>";
-            sTrHtml += resultData[j].name;
-            sTrHtml += "</td>";
-            sTrHtml += "<td>";
-            sTrHtml += resultData[j].startAmount;
-            sTrHtml += "</td>";
-
-            sTrHtml += "<td>";
-            sTrHtml += resultData[j].endAmount;
-            sTrHtml += "</td>";
-
-            sTrHtml += "<td>";
-            sTrHtml += resultData[j].startPeriod;
-            sTrHtml += "</td>";
-
-            sTrHtml += "<td>";
-            sTrHtml += resultData[j].endPeriod;
-            sTrHtml += "</td>";
-
-            sTrHtml += "<td>";
-            sTrHtml += resultData[j].serviceRate;
-            sTrHtml += "</td>";
-
-            sTrHtml += "<td>";
-            sTrHtml += "<label>编辑</label>";
-            sTrHtml += "&nbsp;&nbsp;";
-            if(resultData[j].isValid) {
-                sTrHtml += "<span>停用</span>";
-            }else {
-                sTrHtml += "<span>启用</span>";
-            }
-            sTrHtml += "&nbsp;&nbsp;";
-            sTrHtml += "<detail>详情</detail>";
-
-            sTrHtml += "&nbsp;&nbsp;";
-            sTrHtml += "<config>配置价格</config>";
-            sTrHtml += "&nbsp;&nbsp;";
-            sTrHtml += "<recommend>配置推荐产品</recommend>";
-            sTrHtml += "</td>";
-
-            sTrHtml += "</tr>";
-            sHtml += sTrHtml;
-        });
-        $("#productList").append(sHtml);
-
-        //设置分页信息
-        $("#pageHtml").pagination(obj.totalElements, { //recordCount在后台定义的一个公有变量，通过从数据库查询记录进行赋值，返回记录的总数
-            callback: pageselectCallback,  //点击分页时，调用的回调函数
-            prev_text: '« 上一页',  //显示上一页按钮的文本
-            next_text: '下一页 »',  //显示下一页按钮的文本
-            items_per_page:100,  //每页显示的项数
-            num_display_entries:6,  //分页插件中间显示的按钮数目
-            current_page:obj.number,  //当前页索引
-            num_edge_entries:2 //分页插件左右两边显示的按钮数目
-
-        });
-        //停用
-        $("#dataTable tr td span").click(function(){
-            var id = $(this).parent().parent().find("td")[0].innerText;//alert(this);
-            if(confirm("确定要停用该信用卡吗？"))
-            {
-                var values = {};
-                values["id"]=id;
-                var data =  post(enableUrl,values);
-                if(data.success) {
-                    initData(0);
-                }
-            }
-        });
-        //编辑
-        $("#dataTable tr td label").click(function(){
-            var id = $(this).parent().parent().find("td")[0].innerText;
-            window.location.href="../product/productedit.html?id="+id;
-
-        });
-        //详情
-        $("#dataTable tr td detail").click(function(){
-            var id = $(this).parent().parent().find("td")[0].innerText;
-            window.location.href="../product/productdetail.html?id="+id;
-
-        });
-        //配置推荐产品
-        $("#dataTable tr td recommend").click(function(){
-            var id = $(this).parent().parent().find("td")[0].innerText;
-            window.location.href="../product/productrecommend.html?id="+id;
-
-        });
-        //配置价格
-        $("#dataTable tr td config").click(function(){
-            var id = $(this).parent().parent().find("td")[0].innerText;
-            layer.ready(function(){
-                layer.open({
-                    type: 2,
-                    title: '产品价格管理',
-                    maxmin: true,
-                    area: ['800px', '650px'],
-                    content: "/static/product/productpricelist.html?productId="+id,
-                    end: function(){
-
-                    }
-                });
-            });
-
-        });
-    }
-
-    function pageselectCallback(page_id,jq){
-        initData(page_id);
-    }
-    //加载数据
-    initData(0);
 
     $(function(){
         $("#navtop").load("../top.html",function () {
@@ -190,6 +30,7 @@
                 $("#flowview").parent().prev().attr("class","subNav sublist-up");
             }
         });
+        $("#flowContent").load("../newstyle/flow-main.html");
     });
 
 </script>
