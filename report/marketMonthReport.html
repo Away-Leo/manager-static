@@ -1,36 +1,7 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no"/>
-<title>收入月报</title>
-<link href="../bootstrap-3.3.5-dist/css/bootstrap.min.css" title="" rel="stylesheet" />
-<link title="" href="../css/style.css" rel="stylesheet" type="text/css"  />
-<link title="" href="../css/pagination.css" rel="stylesheet" type="text/css"  />
-<link title="blue" href="../css/dermadefault.css" rel="stylesheet" type="text/css"/>
-<link title="green" href="../css/dermagreen.css" rel="stylesheet" type="text/css" disabled="disabled"/>
-<link title="orange" href="../css/dermaorange.css" rel="stylesheet" type="text/css" disabled="disabled"/>
-<link href="../css/templatecss.css" rel="stylesheet" title="" type="text/css" />
-<script src="../script/jquery-1.11.1.min.js" type="text/javascript"></script>
-<script src="../script/jquery.cookie.js" type="text/javascript"></script>
-<script src="../script/pingxun.js" type="text/javascript"></script>
-<script src="../script/jquery.pagination.js" type="text/javascript"></script>
-<script src="../bootstrap-3.3.5-dist/js/bootstrap.min.js" type="text/javascript"></script>
-<!-- angular ui-->
-<link rel="stylesheet" title="" type="text/css" href="../ui-layout-0.0.0/ui-layout.css"/>
-<script src="../script/angular.min.js"></script>
-<script src="../ui-layout-0.0.0/ui-layout.js"></script>
-<link title="blue" href="../script/jquery.mloading.css" rel="stylesheet" type="text/css"/>
-<script src="../script/jquery.mloading.js" type="text/javascript"></script>
-<script src="../script/layer.js" type="text/javascript"></script>
-<script language="javascript" type="text/javascript" src="../script/WdatePicker.js"></script>
 
-</head>
-<body>
-<div id="navtop"></div>
-<div class="down-main">
-  <div class="left-main left-full" include="left" id="left"></div>
-  <div class="right-product right-full">
+<div >
+
+  <div style="background: #FFF;">
     <div class="layout-mock">
         <div class="center-back right-back">
         <div class="container-fluid">
@@ -167,7 +138,6 @@
         </div>
    </div>
  </div>
-</div>
 <script type="text/javascript">
 function initData(pageIndex,sortZiduan) {
     $("#productList").empty();
@@ -330,7 +300,7 @@ function bindData(obj) {
 //加载数据
 initData(0);
 function viewDetail(id,dayId) {
-    window.location.href="../report/marketDailyDetail.html?productId="+id+"&applyStartDate="+dayId;
+    cwLoad("report/marketDailyDetail.html?productId="+id+"&applyStartDate="+dayId);
 }
 function viewIncome(id) {
     layer.ready(function(){
@@ -339,7 +309,7 @@ function viewIncome(id) {
             title: '收入详情',
             maxmin: true,
             area: ['800px', '500px'],
-            content: "/static/report/settleIncome.html?productId="+id,
+            content: "report/settleIncome.html?productId="+id,
             end: function(){
 
             }
@@ -353,7 +323,7 @@ function viewSettle(id){
             title: '结算单',
             maxmin: true,
             area: ['800px', '850px'],
-            content: "/static/report/settlement.html?productId="+id+"&"+$("#searchForm").serialize(),
+            content: "report/settlement.html?productId="+id+"&"+$("#searchForm").serialize(),
             end: function(){
 
             }
@@ -367,7 +337,7 @@ function viewBackDate(id){
             title: '回款明细',
             maxmin: true,
             area: ['600px', '650px'],
-            content: "/static/report/incomeBackList.html?productId="+id+"&"+$("#searchForm").serialize(),
+            content: "report/incomeBackList.html?productId="+id+"&"+$("#searchForm").serialize(),
             end: function(){
 
             }
@@ -375,23 +345,8 @@ function viewBackDate(id){
     });
 }
 $(function(){
-    $("#navtop").load("../top.html",function () {
-        topFunc();
-    });
-    $("#left").load("../left.html",function(){
-        left();
-        var links = window.location.href;
-        if(links.indexOf("marketMonthReport")!=-1)
-        {
-            $("#marketMonthReport").addClass("active");
-            $("#marketMonthReport").parent().attr("style","display:block");
-            $("#marketMonthReport").parent().prev().attr("class","subNav sublist-up");
-        }
-    });
     initAppList();
     initMarketOperateList();
 });
 
 </script>
-</body>
-</html>

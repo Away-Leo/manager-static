@@ -1,5 +1,5 @@
 // var httpUrl = "https://www.pingxundata.com";//正式环境
-var httpUrl = "http://192.168.1.88/apis";//本地开发环境
+var httpUrl = "http://192.168.1.3/apis";//本地开发环境
 // var httpUrl = "http://192.168.1.100:1234";//测试环境
 var loginUrl = httpUrl + "/common/passwordLogin.json";
 var logoutUrl = httpUrl + "/common/logout.json";
@@ -207,16 +207,16 @@ function uploadFile(id){
     return result;
 }
 function backProductList() {
-    window.location.href="../product/productlist.html";
+    cwLoad("product/productlist.html");
 }
 function backbannertList() {
-    window.location.href="../banner/list.html";
+    cwLoad("banner/list.html");
 }
 function backCardList() {
-    window.location.href="../creditcard/list.html";
+    cwLoad("creditcard/list.html");
 }
 function backChannelList() {
-    window.location.href="../channel/list.html";
+    cwLoad("channel/list.html");
 }
 function logout() {
     var param = "1=1";
@@ -224,7 +224,7 @@ function logout() {
     if(result.success)
     {
         localStorage.clear();
-        window.location.href="../login.html";
+        window.location.href="login.html";
     }
 }
 function getArgsFromHref(sHref, sArgName)
@@ -362,7 +362,7 @@ function showChannelChart(container,dataArray) {
     });
 }
 function backUserList() {
-    window.location.href="/user/userlist.html";
+    cwLoad("user/userlist.html");
 }
 var roleIds;
 function left() {
@@ -401,8 +401,8 @@ function left() {
                 $.each(data.data, function (j) {
                     if (rootId == data.data[j].parentId) {
                         html += "    <li id=\""+data.data[j].permission+"\">";
-                        html += "     <div class=\"showtitle\" style=\"width:100px;\"><img src=\"../img/leftimg.png\"/>"+data.data[j].name+"</div>";
-                        html += "     <a href=\""+data.data[j].url+"\" style='margin-left: 15px' ><span class=\"sublist-icon glyphicon "+data.data[j].parentIds+"\"></span><span class=\"sub-title\">"+data.data[j].name+"</span></a> </li>";
+                        html += "     <div class=\"showtitle\" style=\"width:100px;\"><img src=\"./img/leftimg.png\"/>"+data.data[j].name+"</div>";
+                        html += "     <a class='leftHref' href='javascript:void(0)' urlStr='"+data.data[j].url+"' onclick='loadChild(this)' style='padding-left: 15px' ><span class=\"sublist-icon glyphicon "+data.data[j].parentIds+"\"></span><span class=\"sub-title\">"+data.data[j].name+"</span></a> </li>";
                     }
 
                     if(j==data.data.length-1)
@@ -412,6 +412,40 @@ function left() {
                 });
             }
     });
+    window.loadChild=function(data) {
+        $('#loadingModal').show();
+        $("#contentContainer").load($(data).attr("urlStr"),function (r,s) {
+            if(s!=null){
+                $('#loadingModal').hide();
+            }
+        });
+        // $("#downMain").removeClass("down-main");
+        // $("#contentContainer").removeClass("right-product my-index right-full");
+        $(".leftHref").each(function () {
+            $(this).removeClass("active");
+        });
+        $(data).addClass("active");
+        $(data).parent().attr("style","display:block");
+        $(data).parent().prev().attr("class","subNav sublist-up");
+    };
+    window.cwLoad=function (data) {
+        $('#loadingModal').show();
+        $("#contentContainer").load(data,function (response,status,xhr) {
+            if(status!=null){
+                $('#loadingModal').hide();
+            }
+
+        });
+    };
+    window.showLoading = function (loadText) {
+        if(!loadText){
+            $("#loadText").html(loadText)
+        }
+        $('#loadingModal').show();
+    };
+    window.hideLoading = function () {
+        $('#loadingModal').hide();
+    };
     findByUserId();
     $("#menutree").append(html);
     /*左侧导航栏显示隐藏功能*/
@@ -490,7 +524,7 @@ function topFunc() {
     var userName = localStorage.getItem("userName");
     $("#showUserName").text(userName);
     if(userName == "null"||userName==undefined){
-        window.location.href="../login.html";
+        window.location.href="login.html";
     }
     /*换肤*/
     $(".dropdown .changecolor li").click(function(){
@@ -590,7 +624,7 @@ function showAppChart(id,showColumn)
             title: '来量时段趋势图',
             maxmin: true,
             area: ['800px', '500px'],
-            content: "/static/report/devUserHour.html?channelId="+id+"&quota="+showColumn+"&"+data,
+            content: "report/devUserHour.html?channelId="+id+"&quota="+showColumn+"&"+data,
             end: function(){
 
             }
@@ -606,7 +640,7 @@ function showMerchantChart(id)
             title: '商户月申请趋势',
             maxmin: true,
             area: ['800px', '500px'],
-            content: "/static/report/monthChart.html?productId="+id+"&"+data,
+            content: "report/monthChart.html?productId="+id+"&"+data,
             end: function(){
 
             }
@@ -616,7 +650,7 @@ function showMerchantChart(id)
 function showTipMessage(message,flag) {
     layer.alert(message,{icon:2,yes:function(index){
         if (flag) {
-            window.location.href = "/static/login.html";
+            window.location.href = "login.html";
         }else{
             layer.close(index);
         }
@@ -668,7 +702,7 @@ function updatePassword() {
 //excel导出
 function exportExcel(excelFlag) {
     var data = $("#searchForm").serialize();
-    window.location.href="/excel/exportExcel?excelFlag="+excelFlag+"&"+data;
+    cwLoad("excel/exportExcel?excelFlag="+excelFlag+"&"+data);
 }
 function initAppList(){
     var param = "type=bannerPosition";

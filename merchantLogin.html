@@ -48,10 +48,10 @@
         if(result.success)
         {
             localStorage.setItem("userName",values["userName"]);
-            window.location.href="../channelIndex.html";
+            cwLoad("channelIndex.html");
         }else{
             alert(result.message);
-            window.location.href="../merchantLogin.html";
+            cwLoad("merchantLogin.html");
         }
     }
     function KeyDown()
