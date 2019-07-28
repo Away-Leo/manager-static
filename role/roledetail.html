@@ -35,11 +35,11 @@
 		</div>
   </div>
 </div>
+<script src="script/jquery.ztree.excheck.js" type="text/javascript"></script>
+<script type="text/javascript" src="script/jquery.ztree.exedit.js"></script>
 <script type="text/javascript">
 function findByData() {
-    var hrefUrl = window.location.href;
-    var id=getArgsFromHref(hrefUrl,"id");
-    var param = "id="+id;
+    var param = "id="+roleId;
     var result = get(findByRoleIdUrl,param);
     if(result.success)
     {

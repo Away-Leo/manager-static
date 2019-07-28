@@ -28,7 +28,7 @@
                           <button type="button" class="btn btn-default" onclick="javascript:addUser()"><span class="glyphicon glyphicon-plus"></span> 新增</button>
                         </div>
                         </div>
-                        
+
                     </div>
                     <div class="clearfix"></div>
                       <div class="table-margin">
@@ -104,9 +104,9 @@ function bindData(obj) {
         sTrHtml += "</td>";
 
         sTrHtml += "<td>";
-        sTrHtml += "<label>编辑</label>";
+        sTrHtml += "<label class='roleEditBtn' roleId='"+resultData[j].id+"'>编辑</label>";
         sTrHtml += "&nbsp;&nbsp;";
-        sTrHtml += "<detail>详情</detail>";
+        sTrHtml += "<detail class='roleDetailBtn' roleId='"+resultData[j].id+"'>详情</detail>";
         sTrHtml += "</td>";
 
         sTrHtml += "</tr>";
@@ -139,14 +139,14 @@ function bindData(obj) {
         }
     });
     //编辑
-    $("#dataTable tr td label").click(function(){
-        var id = $(this).parent().parent().find("td")[0].innerText;
-        cwLoad("role/roleedit.html?id=");;
+    $(".roleEditBtn").click(function(){
+        roleId = $(this).attr("roleId");
+        cwLoad("role/roleedit.html");
     });
     //编辑
     $("#dataTable tr td detail").click(function(){
-        var id = $(this).parent().parent().find("td")[0].innerText;
-        cwLoad("role/roledetail.html?id=");;
+        roleId = $(this).parent().parent().find("td")[0].innerText;
+        cwLoad("role/roledetail.html");
     });
 }
 
