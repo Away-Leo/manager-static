@@ -58,6 +58,11 @@
 		</div>
   </div>
 </div>
+<script src="../script/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="../script/pingxun.js" type="text/javascript"></script>
+<link title="blue" href="../script/jquery.mloading.css" rel="stylesheet" type="text/css"/>
+<script src="../script/jquery.mloading.js" type="text/javascript"></script>
+<script language="javascript" type="text/javascript" src="../script/WdatePicker.js"></script>
 <script type="text/javascript">
 //保存产品
 function savePrice() {
@@ -88,7 +93,7 @@ function savePrice() {
     var result = post(saveProductPriceUrl,values);
     if(result.success)
     {
-        cwLoad("product/productpricelist.html?productId="+$("#productId").val());
+        window.location.href="productpricelist.html?productId="+$("#productId").val();
     }else{
         showTipMessage(result.message,true);
     }

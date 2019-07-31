@@ -1,5 +1,6 @@
 // var httpUrl = "https://www.pingxundata.com";//正式环境
-var httpUrl = "http://karl-leo.imwork.net/apis";//本地开发环境
+var httpUrl = "http://192.168.1.3/apis";//本地开发环境
+// var httpUrl = "http://karl-leo.imwork.net/apis";//本地开发环境
 // var httpUrl = "http://192.168.1.100:1234";//测试环境
 var loginUrl = httpUrl + "/common/passwordLogin.json";
 var logoutUrl = httpUrl + "/common/logout.json";
@@ -11,6 +12,7 @@ var getUserPage = httpUrl + "/common/getUserPage.json";
 
 /*渠道引流*/
 var channelflowPage=httpUrl+"/backend/flow/findChannelFlowPage.json";//渠道引流列表
+var findChannelQuality=httpUrl+"/backend/flow/findChannelQuality.json";//渠道引流质量分析列表
 var saveOrUpdateFlow=httpUrl+"/backend/flow/saveOrUpdateFlow.json";
 var saveOrUpdateWhole=httpUrl+"/backend/flow/saveOrUpdateWhole.json";
 var findWhole=httpUrl+"/backend/flow/findWhole.json";
@@ -139,6 +141,27 @@ var findByCostIdUrl = httpUrl + "/backend/cost/findById.json";
 var saveCostUrl = httpUrl + "/backend/cost/create.json";
 var updateCostUrl = httpUrl + "/backend/cost/update.json";
 var totalCostUrl = httpUrl + "/backend/cost/getTotal.json";
+
+
+var roleIds;
+window.productId="";
+
+if(!window.showModalDialog){
+    window.showModalDialog=function(url,name,option){
+        if(window.hasOpenWindow){
+            window.newWindow.focus();
+        }
+        var re = new RegExp(";", "g");
+        var option  = option.replace(re, '","'); //把option转为json字符串
+        var re2 = new RegExp(":", "g");
+        option = '{"'+option.replace(re2, '":"')+'"}';
+        option = JSON.parse(option);
+        var openOption = 'width='+parseInt(option.dialogWidth)+',height='+parseInt(option.dialogHeight)+',left='+(window.screen.width-parseInt(option.dialogWidth))/2+',top='+(window.screen.height-30-parseInt(option.dialogHeight))/2;
+        window.hasOpenWindow = true;
+        window.newWindow = window.open(url,name,openOption);
+    }
+};
+
 
 function post(url, data) {
     var returnData;
@@ -383,8 +406,6 @@ function showChannelChart(container, dataArray) {
 function backUserList() {
     cwLoad("user/userlist.html");
 }
-
-var roleIds;
 
 function left() {
     if (localStorage.getItem("userName").indexOf("admin") != -1) {

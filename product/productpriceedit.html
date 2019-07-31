@@ -59,10 +59,15 @@
 		</div>
   </div>
 </div>
+<script src="../script/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="../script/pingxun.js" type="text/javascript"></script>
+<link title="blue" href="../script/jquery.mloading.css" rel="stylesheet" type="text/css"/>
+<script src="../script/jquery.mloading.js" type="text/javascript"></script>
+<script language="javascript" type="text/javascript" src="../script/WdatePicker.js"></script>
 <script type="text/javascript">
 function findByData() {
     var hrefUrl = window.location.href;
-    var id = getArgsFromHref(hrefUrl, "id");
+    var id = getArgsFromHref(hrefUrl,"productId");
     var param = "id=" + id;
     var result = get(productPriceByIdUrl, param);
     if (result.success) {

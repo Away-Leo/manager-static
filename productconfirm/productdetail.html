@@ -258,7 +258,7 @@
                         </dl>
                         <dd class="pull-left margin-large-left margin-small-top">
                             <p class="text-small">
-                                <input type="button" value="返回" style="width: 150px;" onclick="javascript:cwLoad('/static/productconfirm/productlist.html')"/>
+                                <input type="button" value="返回" style="width: 150px;" onclick="javascript:cwLoad('productconfirm/productlist.html')"/>
                             </p>
                         </dd>
 				</div>
@@ -268,8 +268,8 @@
 <script type="text/javascript">
 function findByData() {
     var hrefUrl = window.location.href;
-    var id=getArgsFromHref(hrefUrl,"id");
-    var param = "id="+id
+    var id=window.productId;
+    var param = "id="+id;
     var result = get(findByIdUrl,param);
     if(result.success)
     {

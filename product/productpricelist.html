@@ -50,12 +50,16 @@
    </div>
  </div>
 </div>
+<script src="../script/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="../script/pingxun.js" type="text/javascript"></script>
+<link title="blue" href="../script/jquery.mloading.css" rel="stylesheet" type="text/css"/>
+<script src="../script/jquery.mloading.js" type="text/javascript"></script>
 <script type="text/javascript">
 function addProduct() {
     var hrefUrl = window.location.href;
     var productId=getArgsFromHref(hrefUrl,"productId");
     $("#productId").val(productId);
-    cwLoad("product/productpriceadd.html?productId="+productId);
+    window.location.href="productpriceadd.html?productId="+productId;
 }
 function initData(pageIndex) {
     $("#productList").empty();
@@ -121,11 +125,11 @@ function  deletePrice(id) {
     var productId = $("#productId").val();
     var result = get(productPriceDeleteUrl,param);
     if(result.success){
-        cwLoad("product/productpricelist.html?productId="+productId);
+        window.location.href="productpricelist.html?productId="+productId;
     }
 }
 function editPrice(id) {
-   cwLoad("product/productpriceedit.html?id="+id);
+   window.location.href="productpriceedit.html?productId="+id;
 }
 //加载数据
 initData(0);

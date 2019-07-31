@@ -62,7 +62,6 @@
         var hrefUrl = window.location.href;
         var productId = getArgsFromHref(hrefUrl, "productId");
         values["productId"] = productId;
-        debugger;
         $("#productId").val(productId);
         var data = $("#searchForm").serializeArray();
         for (var item in data) {

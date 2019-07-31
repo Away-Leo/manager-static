@@ -167,7 +167,7 @@ function setRecommend(type) {
 $(function(){
     var hrefUrl = window.location.href;
     var productName = $("#productName").val();
-    var productId=getArgsFromHref(hrefUrl,"id");
+    var productId=window.productId;
     $("#productId").val(productId);
 
     //加载默认推荐产品

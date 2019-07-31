@@ -170,32 +170,32 @@ function bindData(obj) {
     });
     //编辑
     $("#dataTable tr td label").click(function(){
-        var id = $(this).parent().parent().find("td")[0].innerText;
-        cwLoad("product/productedit.html?id="+id);
+        window.productId = $(this).parent().parent().find("td")[0].innerText;
+        cwLoad("product/productedit.html");
 
     });
     //详情
     $("#dataTable tr td detail").click(function(){
-        var id = $(this).parent().parent().find("td")[0].innerText;
-        cwLoad("product/productdetail.html?id="+id);
+        window.productId = $(this).parent().parent().find("td")[0].innerText;
+        cwLoad("product/productdetail.html");
 
     });
     //配置推荐产品
     $("#dataTable tr td recommend").click(function(){
-        var id = $(this).parent().parent().find("td")[0].innerText;
-        cwLoad("product/productrecommend.html?id="+id);
+        window.productId = $(this).parent().parent().find("td")[0].innerText;
+        cwLoad("product/productrecommend.html");
 
     });
     //配置价格
     $("#dataTable tr td config").click(function(){
-        var id = $(this).parent().parent().find("td")[0].innerText;
+        window.productId = $(this).parent().parent().find("td")[0].innerText;
         layer.ready(function(){
             layer.open({
                 type: 2,
                 title: '产品价格管理',
                 maxmin: true,
                 area: ['800px', '650px'],
-                content: "product/productpricelist.html?productId="+id,
+                content: "product/productpricelist.html?productId="+window.productId,
                 end: function(){
 
                 }
@@ -215,5 +215,3 @@ $(function(){
 });
 
 </script>
-</body>
-</html>

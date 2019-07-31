@@ -186,12 +186,12 @@ function bindData(obj) {
 
         sTrHtml += "<td>";
         if(resultData[j].isValid) {
-            sTrHtml += "<span>下架</span>";
+            sTrHtml += "<span style='cursor: pointer' onclick='upOrDownPro("+resultData[j].id+","+resultData[j].isValid+")'>下架</span>";
         }else {
-            sTrHtml += "<span>上架</span>";
+            sTrHtml += "<span style='cursor: pointer' onclick='upOrDownPro("+resultData[j].id+","+resultData[j].isValid+")'>上架</span>";
         }
         sTrHtml += "&nbsp;&nbsp;";
-        sTrHtml += "<detail>详情</detail>";
+        sTrHtml += "<detail style='cursor: pointer' onclick='detailClick("+resultData[j].id+")'>详情</detail>";
         sTrHtml += "</td>";
 
         sTrHtml += "</tr>";
@@ -214,34 +214,59 @@ function bindData(obj) {
 
     });
     //停用
-    $("#dataTable tr td span").click(function(){
-        var id = $(this).parent().parent().find("td")[0].innerText;
-        var isValid = $(this).parent().parent().find("td")[0];
-        var message="";
-        if(isValid.getAttribute("validFlag")=="true")
-        {
-            message = "确定要下架产品吗？"
-        }else{
-            message = "确定要上架产品吗？"
-        }
-        if(confirm(message))
-        {
-            var values = {};
-            values["id"]=id;
-            var data =  post(enableUrl,values);
-            if(data.success) {
-                initData(0);
-            }
-        }
-    });
+    // $("#dataTable tr td span").click(function(){
+    //     var id = $(this).parent().parent().find("td")[0].innerText;
+    //     var isValid = $(this).parent().parent().find("td")[0];
+    //     var message="";
+    //     if(isValid.getAttribute("validFlag")=="true")
+    //     {
+    //         message = "确定要下架产品吗？"
+    //     }else{
+    //         message = "确定要上架产品吗？"
+    //     }
+    //     if(confirm(message))
+    //     {
+    //         var values = {};
+    //         values["id"]=id;
+    //         var data =  post(enableUrl,values);
+    //         if(data.success) {
+    //             initData(0);
+    //         }
+    //     }
+    // });
     //编辑
-    $("#dataTable tr td detail").click(function(){
-        var id = $(this).parent().parent().find("td")[0].innerText;
-        cwLoad("productconfirm/productdetail.html?id="+id);
-    });
+    // $("#dataTable tr td detail").click(function(){
+    //     var id = $(this).parent().parent().find("td")[0].innerText;
+    //     cwLoad("productconfirm/productdetail.html?id="+id);
+    // });
+}
+
+function upOrDownPro(id,isValid) {
+    var message="";
+    if(isValid=="true")
+    {
+        message = "确定要下架产品吗？"
+    }else{
+        message = "确定要上架产品吗？"
+    }
+    if(confirm(message))
+    {
+        var values = {};
+        values["id"]=id;
+        var data =  post(enableUrl,values);
+        if(data.success) {
+            initData(0);
+        }
+    }
+}
+function detailClick(id) {
+    window.productId = id;
+    cwLoad("productconfirm/productdetail.html");
+    // window.showModalDialog("productconfirm/productdetail.html",window,"dialogWidth:1500px;dialogHeight:900px");
 }
 function editProduct(id) {
-    cwLoad("product/productedit.html?id="+id);
+    window.productId=id;
+    cwLoad("product/productedit.html?id=");
 }
 function openLoginUrl(url){
     if(url.indexOf("http://")==-1&&url.indexOf("https://")==-1)
