@@ -29,6 +29,11 @@
         </div>
     </div>
 </div>
+<script src="../script/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="../script/pingxun.js" type="text/javascript"></script>
+<link title="blue" href="../script/jquery.mloading.css" rel="stylesheet" type="text/css"/>
+<script src="../script/jquery.mloading.js" type="text/javascript"></script>
+<script src="../script/layer.js" type="text/javascript"></script>
 <script type="text/javascript">
     function initData() {
         $("#productList").empty();
@@ -101,7 +106,7 @@
                 title: '结算单',
                 maxmin: true,
                 area: ['800px', '850px'],
-                content: "report/settlement.html?productId=" + id + "&applyStartDate=" + acctMonth,
+                content: "settlement.html?productId=" + id + "&applyStartDate=" + acctMonth,
                 end: function () {
 
                 }

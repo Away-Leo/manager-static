@@ -8,16 +8,16 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-touch-fullscreen" content="yes">
-    <script src="/assets/js/jquery-1.11.3.min.js"></script>
-    <script src="/assets/js/zepto.min.js"></script>
-    <script src="/assets/js/dialog.js"></script>
+    <script src="../../assets/js/jquery-1.11.3.min.js"></script>
+    <script src="../../assets/js/zepto.min.js"></script>
+    <script src="../../assets/js/dialog.js"></script>
     <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="/assets/css/base.css"/>
-    <link rel="stylesheet" href="/assets/css/common.css"/>
+    <link rel="stylesheet" href="../../assets/css/base.css"/>
+    <link rel="stylesheet" href="../../assets/css/common.css"/>
 </head>
 <body>
 <style>
-body{background:url(img/bg.jpg) no-repeat; background-size:100% auto}
+body{background:url(img/dabaiyinliu.png) no-repeat; background-size:100% auto}
 .download .img{ text-align:center;margin-top:90%}
 .download .img img{ width:50%; margin:30px auto 0;}
 
@@ -60,10 +60,6 @@ body{background:url(img/bg.jpg) no-repeat; background-size:100% auto}
                         <span id="xieyi" class="checkbox-style2 checked"> </span>
                     </span>点击立即注册即同意<a href="/static/jqdRegister.html">《注册协议》</a>
                 </div>
-                <div class="login-pass tc mt20" style="text-align:center">
-                    <img src="img/jieqiandi.png" width="90" height="90"/><br>
-                    <font color="white">扫一扫获取更多贷款信息</font>
-                </div>
         </div>
     </div>
 </div>
@@ -71,11 +67,12 @@ body{background:url(img/bg.jpg) no-repeat; background-size:100% auto}
 </html>
 <script type="text/javascript">
 //    var httpUrl = "http://192.168.1.104:9999";
-    var httpUrl = "https://www.pingxundata.com";
+    var httpUrl = "http://karl-leo.imwork.net/apis";
     var sendSmsUrl = httpUrl + "/common/sendSmsVerify.json";
     var loginUrl = httpUrl + "/common/passwordLogin.json";
     var sendTime =60;
     var InterValObj;
+    var appName="DBHH";
     $(function(){
         $("#form-input input").keyup(function(){
             var phone=$("#phone").val();
@@ -92,7 +89,7 @@ body{background:url(img/bg.jpg) no-repeat; background-size:100% auto}
         $("#login").click(function(){
             var phone=$("#phone").val();
             var pas=  $("#pas").val();
-            var isMobile=/^(?:13\d|15\d|18\d|17\d)\d{5}(\d{3}|\*{3})$/; //手机号码验证规则
+            var isMobile=/^(?:13\d|15\d|18\d|19\d|17\d)\d{5}(\d{3}|\*{3})$/; //手机号码验证规则
             if(phone.length<11){
                 return showMessage("请输入手机号码！")
             }
@@ -115,12 +112,15 @@ body{background:url(img/bg.jpg) no-repeat; background-size:100% auto}
             var channelNo = getArgsFromHref(hrefUrl,"channelNo");
             values["userName"]=phone;
             values["password"]=pas;
-            values["appName"]="JQW";
+            values["appName"]="DBHH";
             values["channelNo"]=channelNo;
-            var result = loginPost(loginUrl,values)
+            var result = loginPost(loginUrl,values);
             if(result.success){
-                localStorage.setItem("loginUser",phone);
-                window.location.href="/static/prolist.html";
+                var u = navigator.userAgent;
+                var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+                var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+                alert('是否是Android：'+isAndroid);
+                alert('是否是iOS：'+isiOS);
             }else{
                 return showMessage(result.message);
             }
@@ -135,7 +135,7 @@ body{background:url(img/bg.jpg) no-repeat; background-size:100% auto}
         });
         $("#sendSms").click(function(){
             var phone=$("#phone").val();
-            var isMobile=/^(?:13\d|15\d|18\d|17\d)\d{5}(\d{3}|\*{3})$/; //手机号码验证规则
+            var isMobile=/^(?:13\d|15\d|18\d|19\d|17\d)\d{5}(\d{3}|\*{3})$/; //手机号码验证规则
             if(phone.length<11){
                 return  showMessage("请输入手机号码！")
             }
@@ -148,7 +148,8 @@ body{background:url(img/bg.jpg) no-repeat; background-size:100% auto}
             var channelNo = getArgsFromHref(hrefUrl,"channelNo");
             param["phone"] = phone;
             param["channelNo"]=channelNo;
-            param["appName"] = "JQW";
+            param["appName"] = appName;
+            param["sourceCode"] = channelNo;
             var result = loginPost(sendSmsUrl,param);
             if(result.success) {
                 localStorage.setItem("channelNo",channelNo);
@@ -182,6 +183,7 @@ body{background:url(img/bg.jpg) no-repeat; background-size:100% auto}
         var hrefUrl = window.location.href;
         var channelNo = getArgsFromHref(hrefUrl,"channelNo");
         data["channelNo"]=channelNo;
+        data["sourceCode"]=channelNo;
         var json = JSON.stringify(data);
         json = json.replace(/\r\n/g,"\n");
         $.ajax({
