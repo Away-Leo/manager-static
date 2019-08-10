@@ -41,7 +41,7 @@
                                     <span class="show pull-left base-name">APP微信引导图</span>
                                     <span class="margin-left">
                                         <input id="listDetailHide" type="hidden" value="" name="bannerDetailImg" style="width:250px;top:50px"/>
-                                        <label for="listDetail"><img id="listDetailImg" src="img/upload.png" style="width:114px;height:114px"/></label>
+                                        <label for="listDetail"><img id="listDetailImg" src="../img/upload.png" style="width:114px;height:114px"/></label>
                                         <input id="listDetail" type="file" name="file" onchange="javascript:productImgUpload(this)" style="display: none"/>
                                 </span>
                                 </p>
@@ -73,8 +73,7 @@
 </div>
 <script>
 function findByData() {
-    var hrefUrl = window.location.href;
-    var id=getArgsFromHref(hrefUrl,"id");
+    var id=bannerId;
     var param ="id="+id;
     var result = get(findBannerByIdUrl,param);
     if(result.success)
@@ -134,7 +133,7 @@ $(function(){
     var param = "type=bannerPosition";
     var result = get(findByTypeUrl,param);
     var resultData = result.data;
-    var sHtml = "<option value=\"\">全部</option>";
+    var sHtml = "<option value=\"common\">全部</option>";
     $.each(resultData, function (j) {
         var sTrHtml = "";
         sTrHtml += "<option value='"+resultData[j].code+"'>";

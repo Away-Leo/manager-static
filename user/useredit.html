@@ -68,8 +68,7 @@ function initRole()
     }
 }
 function findByData() {
-    var hrefUrl = window.location.href;
-    var id=getArgsFromHref(hrefUrl,"id");
+    var id=userId;
     var param ="id="+id;
     var result = get(findByUserIdUrl,param);
     if(result.success)

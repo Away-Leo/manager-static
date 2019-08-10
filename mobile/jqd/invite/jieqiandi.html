@@ -2,8 +2,9 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>极速贷款就上借钱帝</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>大白花花</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
@@ -17,147 +18,211 @@
 </head>
 <body>
 <style>
-body{background:url(img/dabaiyinliu.png) no-repeat; background-size:100% auto}
-.download .img{ text-align:center;margin-top:90%}
-.download .img img{ width:50%; margin:30px auto 0;}
+    body {
+        background: url(img/dabaiyinliu.png) no-repeat;
+        background-size: 100% auto
+    }
 
-.block-form{ padding:0 20px;}
-.form{ width:95%; padding:1px 20px; margin:0 auto; font-size:1.2rem; border-radius:5px;}
-.form li{ line-height:4rem; margin-bottom:1rem; background:#fff; border-radius:5px; border-bottom:1px solid #ccc;}
-.form .icon{float:left;opacity:0.8;}
-.form .icon img{ width:2.5rem; display:inline; margin:0 5px;}
-.form input{ background:none;text-indent:10px;}
-.form .get-code{ background:#fff; display:inline-block; padding:0 10px; height:4rem; line-height:4rem; color:#fe1547; float:right; margin:5px 0 0 0;border-radius:5px; font-size:1.2rem; border-left:1px solid #ccc;}
-.login-pass{ text-align:left; }
-.login-pass a{font-size:1.2rem;color:#338ffb;}
-.btn-login{background:url(img/login.png) no-repeat; background-size: 100%; width:100%; line-height:4rem;height:4rem; color:#fff; border-radius:20px;}
-.checkbox-style2.checked { background: url(img/radio_check.png) no-repeat;background-size: 100%;}
+    .download .img {
+        text-align: center;
+        margin-top: 90%
+    }
+
+    .download .img img {
+        width: 50%;
+        margin: 30px auto 0;
+    }
+
+    .block-form {
+        padding: 0 20px;
+    }
+
+    .form {
+        width: 95%;
+        padding: 1px 20px;
+        margin: 0 auto;
+        font-size: 1.2rem;
+        border-radius: 5px;
+    }
+
+    .form li {
+        line-height: 4rem;
+        margin-bottom: 1rem;
+        background: #fff;
+        border-radius: 5px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .form .icon {
+        float: left;
+        opacity: 0.8;
+    }
+
+    .form .icon img {
+        width: 2.5rem;
+        display: inline;
+        margin: 0 5px;
+    }
+
+    .form input {
+        background: none;
+        text-indent: 10px;
+    }
+
+    .form .get-code {
+        background: #fff;
+        display: inline-block;
+        padding: 0 10px;
+        height: 4rem;
+        line-height: 4rem;
+        color: #fe1547;
+        float: right;
+        margin: 5px 0 0 0;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        border-left: 1px solid #ccc;
+    }
+
+    .login-pass {
+        text-align: left;
+    }
+
+    .login-pass a {
+        font-size: 1.2rem;
+        color: #338ffb;
+    }
+
+    .btn-login {
+        background: url(img/login.png) no-repeat;
+        background-size: 100%;
+        width: 100%;
+        line-height: 4rem;
+        height: 4rem;
+        color: #fff;
+        border-radius: 20px;
+    }
+
+    .checkbox-style2.checked {
+        background: url(img/radio_check.png) no-repeat;
+        background-size: 100%;
+    }
 </style>
 <div class="container download">
-	<div class="img"></div>
+    <div class="img"></div>
     <div class="block-form">
-    	<div class="form">
-        	<ul>
-                    <li>
-                    	<div class="icon"><img src="img/icon_login_phone.png" alt=""/></i></div>
-                        <div class="input">
-                            <input type="tel" id="phone" name="userName"  placeholder="输入您的手机号" >
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="icon"><img src="img/icon_login_cold.png" alt=""/></i></div>
-                        <div class="input clearfix">
-                            <input type="test" id="pas" name="password" placeholder="输入验证码" style="width:50%">
-                            <span class="get-code" id="sendSms">验证码</span>
-                            <span class="get-code codeover" id="sending" style="display:none">60s</span>
-                        </div>
-                    </li>
-                </ul>
-                <div class="mt10" style="height: 15px">&nbsp;&nbsp;</div>
-                 <div class="mt10">
-                    <button class="btn-login radius ap-fz16" id="login"></button>
-                     <span class="checkbox-wrap" data-value="0">
+        <div class="form">
+            <ul>
+                <li>
+                    <div class="icon"><img src="img/icon_login_phone.png" alt=""/></i></div>
+                    <div class="input">
+                        <input type="tel" id="phone" name="userName" placeholder="输入您的手机号">
+                    </div>
+                </li>
+                <li>
+                    <div class="icon"><img src="img/icon_login_cold.png" alt=""/></i></div>
+                    <div class="input clearfix">
+                        <input type="test" id="pas" name="password" placeholder="输入验证码" style="width:50%">
+                        <span class="get-code" id="sendSms">验证码</span>
+                        <span class="get-code codeover" id="sending" style="display:none">60s</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="mt10" style="height: 15px">&nbsp;&nbsp;</div>
+            <div class="mt10">
+                <button class="btn-login radius ap-fz16" id="login"></button>
+                <span class="checkbox-wrap" data-value="0">
                         <span id="xieyi" class="checkbox-style2 checked"> </span>
-                    </span>点击立即注册即同意<a href="/static/jqdRegister.html">《注册协议》</a>
-                </div>
+                    </span>点击立即注册即同意<a href="javascript:void(0);">《注册协议》</a>
+            </div>
         </div>
     </div>
 </div>
 </body>
 </html>
 <script type="text/javascript">
-//    var httpUrl = "http://192.168.1.104:9999";
-    var httpUrl = "http://karl-leo.imwork.net/apis";
+       // var httpUrl = "http://192.168.1.3/apis";
+    // var httpUrl = "http://karl-leo.imwork.net/apis";
+    var httpUrl = "https://www.66sudai.cn/apis";
     var sendSmsUrl = httpUrl + "/common/sendSmsVerify.json";
-    var loginUrl = httpUrl + "/common/passwordLogin.json";
-    var sendTime =60;
+    var recordChannelUvUrl = httpUrl + "/common/recordChannelUv.json";
+    var sendTime = 60;
     var InterValObj;
-    var appName="DBHH";
-    $(function(){
-        $("#form-input input").keyup(function(){
-            var phone=$("#phone").val();
-            var pas=  $("#pas").val();
-            var login_btn=$("#login");
-            if(phone=="" || pas==""){
-                login_btn.removeClass("check-ok");
-                login_btn[0].disabled=true;
-            }else{
-                login_btn.addClass("check-ok");
-                login_btn[0].disabled=false;
+    var appName = "DBHH";
+    doUv();
+    function doUv() {
+        var hrefUrl = window.location.href;
+        var channelNo = getArgsFromHref(hrefUrl, "channel");
+        $.ajax({
+            url:recordChannelUvUrl,
+            data:{channelCode:channelNo},
+            dataType:"json",
+            type:"post",
+            success:function (data) {
+                console.log(data);
             }
         });
-        $("#login").click(function(){
-            var phone=$("#phone").val();
-            var pas=  $("#pas").val();
-            var isMobile=/^(?:13\d|15\d|18\d|19\d|17\d)\d{5}(\d{3}|\*{3})$/; //手机号码验证规则
-            if(phone.length<11){
-                return showMessage("请输入手机号码！")
-            }
-            if(!isMobile.test(phone)){
-                return showMessage("请输入正确的手机号码！")
-            }
+    }
 
-            if(pas.length<4){
-                return showMessage("验证码格式不正确！")
+    $(function () {
+        $("#form-input input").keyup(function () {
+            var phone = $("#phone").val();
+            var pas = $("#pas").val();
+            var login_btn = $("#login");
+            if (phone == "" || pas == "") {
+                login_btn.removeClass("check-ok");
+                login_btn[0].disabled = true;
+            } else {
+                login_btn.addClass("check-ok");
+                login_btn[0].disabled = false;
             }
-
-            var xieyicheck =$("#xieyi").attr("class");
-            if(xieyicheck.indexOf("checked")==-1)
-            {
-                return showMessage("请同意注册协议！")
+        });
+        $("#login").click(function () {
+            var pas = $("#pas").val();
+            if (pas.length < 1) {
+                return showMessage("请输入验证码！")
             }
-
-            var values={};
-            var hrefUrl = window.location.href;
-            var channelNo = getArgsFromHref(hrefUrl,"channelNo");
-            values["userName"]=phone;
-            values["password"]=pas;
-            values["appName"]="DBHH";
-            values["channelNo"]=channelNo;
-            var result = loginPost(loginUrl,values);
-            if(result.success){
-                var u = navigator.userAgent;
-                var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-                var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-                alert('是否是Android：'+isAndroid);
-                alert('是否是iOS：'+isiOS);
-            }else{
-                return showMessage(result.message);
+            var u = navigator.userAgent, app = navigator.appVersion;
+            var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+            var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+            if (isAndroid) {
+                window.location.href = "https://fir.im/ubpd";
+            }
+            if (isIOS) {
+                window.location.href = "https://fir.im/64g8";
             }
         });
         $("#xieyi").click(function () {
-            if(this.getAttribute("class").indexOf("checked")!=-1)
-            {
+            if (this.getAttribute("class").indexOf("checked") != -1) {
                 $(this).removeClass("checked");
-            }else{
+            } else {
                 $(this).addClass("checked");
             }
         });
-        $("#sendSms").click(function(){
-            var phone=$("#phone").val();
-            var isMobile=/^(?:13\d|15\d|18\d|19\d|17\d)\d{5}(\d{3}|\*{3})$/; //手机号码验证规则
-            if(phone.length<11){
-                return  showMessage("请输入手机号码！")
+        $("#sendSms").click(function () {
+            var phone = $("#phone").val();
+            var isMobile = /^(?:13\d|15\d|18\d|19\d|17\d)\d{5}(\d{3}|\*{3})$/; //手机号码验证规则
+            if (phone.length < 11) {
+                return showMessage("请输入手机号码！")
             }
-            if(!isMobile.test(phone)){
-                return  showMessage("请输入正确的手机号码！")
+            if (!isMobile.test(phone)) {
+                return showMessage("请输入正确的手机号码！")
             }
 
-            var param={};
+            var param = {};
             var hrefUrl = window.location.href;
-            var channelNo = getArgsFromHref(hrefUrl,"channelNo");
+            var channelNo = getArgsFromHref(hrefUrl, "channel");
             param["phone"] = phone;
-            param["channelNo"]=channelNo;
+            param["channelNo"] = channelNo;
             param["appName"] = appName;
             param["sourceCode"] = channelNo;
-            var result = loginPost(sendSmsUrl,param);
-            if(result.success) {
-                localStorage.setItem("channelNo",channelNo);
-                localStorage.setItem("appName","JQW");
+            var result = loginPost(sendSmsUrl, param);
+            if (result.success) {
+                localStorage.setItem("channelNo", channelNo);
+                localStorage.setItem("appName", appName);
                 $("#sending").css("display", "");
                 $("#sendSms").css("display", "none");
                 InterValObj = setInterval("leftTimer()", 1000);
-            }else{
+            } else {
                 dialog({
                     type: null,
                     message: result.message,
@@ -172,25 +237,26 @@ body{background:url(img/dabaiyinliu.png) no-repeat; background-size:100% auto}
         sendTime--;
         if (sendTime == 0) {
             window.clearInterval(InterValObj);
-            $("#sending").css("display","none")
-            $("#sendSms").css("display","")
+            $("#sending").css("display", "none")
+            $("#sendSms").css("display", "")
         }
-        $("#sending").text(""+sendTime+"s")
+        $("#sending").text("" + sendTime + "s")
     }
-    function loginPost(url,data) {
+
+    function loginPost(url, data) {
         var returnData;
-        data["type"]="user";
+        data["type"] = "user";
         var hrefUrl = window.location.href;
-        var channelNo = getArgsFromHref(hrefUrl,"channelNo");
-        data["channelNo"]=channelNo;
-        data["sourceCode"]=channelNo;
+        var channelNo = getArgsFromHref(hrefUrl, "channel");
+        data["channelNo"] = channelNo;
+        data["sourceCode"] = channelNo;
         var json = JSON.stringify(data);
-        json = json.replace(/\r\n/g,"\n");
+        json = json.replace(/\r\n/g, "\n");
         $.ajax({
             url: url,
             contentType: "application/json;charset=utf-8",
             data: json,
-            method:"post",
+            method: "post",
             dataType: "json",
             async: false,
             success: function (data) {
@@ -202,6 +268,7 @@ body{background:url(img/dabaiyinliu.png) no-repeat; background-size:100% auto}
         });
         return returnData;
     }
+
     function showMessage(message) {
         dialog({
             type: null,
@@ -211,23 +278,25 @@ body{background:url(img/dabaiyinliu.png) no-repeat; background-size:100% auto}
         });
         return false;
     }
-function getArgsFromHref(sHref, sArgName)
-{   var args    = sHref.split("?");
-    var retval = 'wechat';
-    if(args[0] == sHref) /*参数为空*/
-    {
-        return retval; /*无需做任何处理*/
+
+    function getArgsFromHref(sHref, sArgName) {
+        var args = sHref.split("?");
+        var retval = '';
+        if (args[0] == sHref) /*参数为空*/
+        {
+            return retval;
+            /*无需做任何处理*/
+        }
+        var str = args[1];
+        args = str.split("&");
+        for (var i = 0; i < args.length; i++) {
+            str = args[i];
+            var arg = str.split("=");
+            if (arg.length <= 1) continue;
+            if (arg[0] == sArgName) retval = arg[1];
+        }
+        return retval;
     }
-    var str = args[1];
-    args = str.split("&");
-    for(var i = 0; i < args.length; i ++)
-    {
-        str = args[i];
-        var arg = str.split("=");
-        if(arg.length <= 1) continue;
-        if(arg[0] == sArgName) retval = arg[1];
-    }
-    return retval;
-}
-/*]]>*/
+
+    /*]]>*/
 </script>

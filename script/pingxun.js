@@ -1,6 +1,6 @@
 // var httpUrl = "https://www.pingxundata.com";//正式环境
-// var httpUrl = "http://192.168.1.3/apis";//本地开发环境
-var httpUrl = "http://karl-leo.imwork.net/apis";//本地开发环境
+// var httpUrl = "http://karl-leo.imwork.net/apis";//本地开发环境
+var httpUrl = "https://www.66sudai.cn/apis";//本地开发环境
 // var httpUrl = "http://192.168.1.100:1234";//测试环境
 var loginUrl = httpUrl + "/common/passwordLogin.json";
 var logoutUrl = httpUrl + "/common/logout.json";
@@ -145,6 +145,8 @@ var totalCostUrl = httpUrl + "/backend/cost/getTotal.json";
 
 var roleIds;
 window.productId="";
+var userId="";
+var bannerId="";
 
 if(!window.showModalDialog){
     window.showModalDialog=function(url,name,option){

@@ -163,14 +163,15 @@ function bindData(obj) {
     });
     //编辑
     $("#dataTable tr td label").click(function(){
-        var id = $(this).parent().parent().find("td")[0].innerText;
-        cwLoad("banner/edit.html?id=");;
+        bannerId = $(this).parent().parent().find("td")[0].innerText;
+        debugger;
+        cwLoad("banner/edit.html");
 
     });
     //详情
     $("#dataTable tr td detail").click(function(){
-        var id = $(this).parent().parent().find("td")[0].innerText;
-        cwLoad("banner/detail.html?id=");;
+        bannerId = $(this).parent().parent().find("td")[0].innerText;
+        cwLoad("banner/detail.html");
 
     });
 }

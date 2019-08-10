@@ -72,9 +72,8 @@
 </div>
 <script>
 function findByData() {
-    var hrefUrl = window.location.href;
-    var id=getArgsFromHref(hrefUrl,"id");
-    var param = "id="+id
+    var id=bannerId;
+    var param = "id="+id;
     var result = get(findCardByIdUrl,param);
     if(result.success)
     {

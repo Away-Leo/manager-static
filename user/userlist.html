@@ -153,12 +153,14 @@ function bindData(obj) {
     //编辑
     $("#dataTable tr td label").click(function(){
         var id = $(this).parent().parent().find("td")[0].innerText;
-        cwLoad("user/useredit.html?id=");;
+        userId=id;
+        cwLoad("user/useredit.html?id=");
     });
     //编辑
     $("#dataTable tr td detail").click(function(){
         var id = $(this).parent().parent().find("td")[0].innerText;
-        cwLoad("user/userdetail.html?id=");;
+        userId=id;
+        cwLoad("user/userdetail.html");
     });
 }
 

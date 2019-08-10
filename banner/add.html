@@ -113,7 +113,7 @@ $(function(){
     var param = "type=bannerPosition";
     var result = get(findByTypeUrl,param);
     var resultData = result.data;
-    var sHtml = "<option value=\"\">全部</option>";
+    var sHtml = "<option value=\"common\">全部</option>";
     $.each(resultData, function (j) {
         var sTrHtml = "";
         sTrHtml += "<option value='"+resultData[j].code+"'>";

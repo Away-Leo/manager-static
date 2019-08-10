@@ -86,7 +86,11 @@ function saveUser() {
     {
         cwLoad("user/userlist.html");
     }else{
-        showTipMessage(result.message,true);
+        layer.alert(result.message, {
+            icon: 2, yes: function (index) {
+                layer.close(index);
+            }
+        });
     }
 }
 $(function(){

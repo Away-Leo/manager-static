@@ -357,11 +357,11 @@
             $("#productType").text(result.data.productType = "" ? "老商户" : "新口子");
             var strRecommend = "";
             if (result.data.isRecommend = "1") {
-                strRecommend = "推荐";
+                strRecommend = "热门推荐";
             } else if (result.data.isRecommend = "2") {
-                strRecommend = "热门";
+                strRecommend = "精品推荐";
             } else if (result.data.isRecommend = "3") {
-                strRecommend = "新";
+                strRecommend = "最新口子";
             } else {
                 strRecommend = "无";
             }

@@ -159,9 +159,22 @@
                                                 <input type="text" class="form-control"
                                                        id="channelName" name="channelName">
                                             </div>
+                                            <div class="form-group">
+                                                <span class="pull-left form-span">起始日期:</span>
+                                                <input type="text" class="form-control"
+                                                       id="flowTimeStart" name="flowTimeStart"
+                                                       onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:false,readOnly:true})">
+                                            </div>
+                                            <div class="form-group">
+                                                <span class="pull-left form-span">结束日期:</span>
+                                                <input type="text" class="form-control"
+                                                       id="flowTimeEnd" name="flowTimeEnd"
+                                                       onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:false,readOnly:true})">
+                                            </div>
                                         </form>
                                         <div class="form-group btn-search">
                                             <button type="button" class="btn btn-primary m-b-10 m-l-5" id="flowSearchBtn">清空</button>
+                                            <button type="button" class="btn btn-primary m-b-10 m-l-5" id="searchBtn">查询</button>
                                         </div>
                                     </div>
                                 </div>
@@ -187,6 +200,12 @@
         $("#flowSearchBtn").click(function () {
             $("#channelName").val("");
             $("#channelPhone").val("");
+            $("#flowTimeStart").val("");
+            $("#flowTimeEnd").val("");
+
+        });
+        $("#searchBtn").click(function () {
+            $table.bootstrapTable('refresh');
         });
 
         //初始化bootstrap-table的内容
@@ -229,7 +248,9 @@
                         page: (params.offset / params.limit), //页码
                         size: params.pageSize,
                         channelName: $("#channelName").val(),
-                        channelPhone: $("#channelPhone").val()
+                        channelPhone: $("#channelPhone").val(),
+                        flowTimeStart:$("#flowTimeStart").val(),
+                        flowTimeEnd:$("#flowTimeEnd").val()
                     };
                     return temp;
                 },
@@ -237,12 +258,12 @@
                     checkbox: false,
                     visible: false                  //是否显示复选框
                 }, {
+                    field: 'flowTime',
+                    title: '日期',
+                    sortable: true
+                },{
                     field: 'channelName',
                     title: '渠道名称',
-                    sortable: true
-                }, {
-                    field: 'channelCode',
-                    title: '渠道编号',
                     sortable: true
                 }, {
                     field: 'channelPhone',
@@ -254,19 +275,26 @@
                     sortable: true
                 }, {
                     field: 'channelPv',
-                    title: '渠道总PV',
+                    title: '产品总PV',
                     sortable: true
                 }, {
                     field: 'channelUv',
-                    title: '渠道总UV',
+                    title: '产品总UV',
                     sortable: true
                 }, {
+                    field: 'flowUv',
+                    title: '渠道当日UV数'
+                }, {
+                    field: 'xishu',
+                    title: 'UV分发系数',
+                    formatter:roiAnalys
+                }, {
                     field: 'channelRegister',
-                    title: '渠道总注册数'
+                    title: '渠道注册数'
                 }, {
                     field: 'channelLogin',
-                    title: '渠道总登录数'
-                },],
+                    title: '激活登录数'
+                }],
                 onLoadSuccess: function () {
                 },
                 onLoadError: function () {
@@ -278,10 +306,26 @@
                 }
             });
         }
-
-        function operateFormatter(value, row, index) {//赋予的参数
-            return '<button type="button" class="btn btn-info m-b-10 m-l-5" onclick="channelSet(' + value + ')">编辑</button>';
-        }
     });
+    
+    function roiAnalys(value, row, index) {
+        var html="";
+        var channelUv=row.channelUv;
+        var flowUv=row.flowUv;
+        if(flowUv!=0){
+            var result=channelUv/flowUv;
+            var num2=result.toFixed(3);
+            var numStr=num2.substring(0,num2.lastIndexOf('.')+3);
+
+            if(parseFloat(numStr)<1){
+                html="<span style='color: red'>"+numStr+"<span/>";
+            }else{
+                html="<span>"+numStr+"</span>";
+            }
+        }else {
+            html="<span style='color: red'>0</span>";
+        }
+        return html;
+    }
 
 </script>
